@@ -1,9 +1,23 @@
 <template>
-  <div class="container"></div>
+  <div class="container">
+    <app-quotes :quotes="quotes"></app-quotes>
+  </div>
 </template>
 
 <script>
-export default {};
+import QuoteGrid from "./components/QuoteGrid.vue";
+
+export default {
+  data() {
+    return {
+      quotes: ["A first quote to see something"],
+      maxQuotes: 10
+    };
+  },
+  components: {
+    "app-quotes": QuoteGrid
+  }
+};
 </script>
 
 <style>
