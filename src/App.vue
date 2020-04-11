@@ -1,11 +1,13 @@
 <template>
   <div class="container">
+    <app-new-quote @quoteAdded="quotes.push($event)"></app-new-quote>
     <app-quotes :quotes="quotes"></app-quotes>
   </div>
 </template>
 
 <script>
 import QuoteGrid from "./components/QuoteGrid.vue";
+import NewQuote from "./components/NewQuote.vue";
 
 export default {
   data() {
@@ -15,7 +17,8 @@ export default {
     };
   },
   components: {
-    "app-quotes": QuoteGrid
+    "app-quotes": QuoteGrid,
+    "app-new-quote": NewQuote
   }
 };
 </script>
