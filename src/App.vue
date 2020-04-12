@@ -1,7 +1,7 @@
 <template>
   <div class="container">
-    <app-header></app-header>
-    <app-new-quote @quoteAdded="quotes.push($event)"></app-new-quote>
+    <app-header :quoteCount="quotes.length" :maxQuotes="maxQuotes"></app-header>
+    <app-new-quote @quoteAdded="newQuote"></app-new-quote>
     <app-quotes :quotes="quotes"></app-quotes>
     <div class="row">
       <div class="col-sm-12 text-center">
@@ -12,6 +12,7 @@
 </template>
 
 <script>
+import Header from "./components/Header.vue";
 import QuoteGrid from "./components/QuoteGrid.vue";
 import NewQuote from "./components/NewQuote.vue";
 
@@ -23,8 +24,19 @@ export default {
     };
   },
   components: {
+    "app-header": Header,
     "app-quotes": QuoteGrid,
     "app-new-quote": NewQuote
+  },
+  methods: {
+    newQuote(quote) {
+      if (this.quotes.length >= this.maxQuotes) {
+        return alert(
+          "You reached your maximum number of quotes. You have to delete a quote first"
+        );
+      }
+      this.quotes.push(quote);
+    }
   }
 };
 </script>
