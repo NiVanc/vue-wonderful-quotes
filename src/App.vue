@@ -1,7 +1,13 @@
 <template>
   <div class="container">
+    <app-header></app-header>
     <app-new-quote @quoteAdded="quotes.push($event)"></app-new-quote>
     <app-quotes :quotes="quotes"></app-quotes>
+    <div class="row">
+      <div class="col-sm-12 text-center">
+        <div class="alert alert-info">Info: Click on the quote to delete it!</div>
+      </div>
+    </div>
   </div>
 </template>
 
